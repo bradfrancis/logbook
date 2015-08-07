@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDriveRoadCondition extends Migration
+class CreateDriveRoadConditionTable extends Migration
 {
     /**
      * Run the migrations.

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDriveVisibility extends Migration
+class CreateDriveVisibilityTable extends Migration
 {
     /**
      * Run the migrations.
