@@ -16,9 +16,11 @@ class CreateDriveVisibilityTable extends Migration
             $table->integer('drive_id')->unsigned();
             $table->integer('visibility_id')->unsigned();
             $table->timestamps();
+        });
 
-            $table->foreign('drive_id')->references('drives')->on('id')->onDelete('cascade');
-            $table->foreign('visibility_id')->references('visibility')->on('id');
+        Schema::table('drive_visibility', function (Blueprint $table) {
+            $table->foreign('drive_id')->references('id')->on('drives')->onDelete('cascade');
+            $table->foreign('visibility_id')->references('id')->on('visibility');
         });
     }
 

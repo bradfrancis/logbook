@@ -16,9 +16,11 @@ class CreateDriveRoadTypeTable extends Migration
             $table->integer('drive_id')->unsigned();
             $table->integer('road_type_id')->unsigned();
             $table->timestamps();
+        });
 
-            $table->foreign('drive_id')->references('drives')->on('id')->onDelete('cascade');
-            $table->foreign('road_type_id')->references('road_types')->on('id');
+        Schema::table('drive_road_type', function(Blueprint $table) {
+            $table->foreign('drive_id')->references('id')->on('drives')->onDelete('cascade');
+            $table->foreign('road_type_id')->references('id')->on('road_types');
         });
     }
 

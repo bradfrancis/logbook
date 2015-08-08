@@ -16,9 +16,11 @@ class CreateDriveTrafficConditionTable extends Migration
             $table->integer('drive_id')->unsigned();
             $table->integer('condition_id')->unsigned();
             $table->timestamps();
+        });
 
-            $table->foreign('drive_id')->references('drives')->on('id')->onDelete('cascade');
-            $table->foreign('condition_id')->references('traffic_conditions')->on('id');
+        Schema::table('drive_traffic_condition', function (Blueprint $table) {
+            $table->foreign('drive_id')->references('id')->on('drives')->onDelete('cascade');
+            $table->foreign('condition_id')->references('id')->on('traffic_conditions');
         });
     }
 

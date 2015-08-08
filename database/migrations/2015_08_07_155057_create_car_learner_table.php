@@ -16,10 +16,12 @@ class CreateCarLearnerTable extends Migration
             $table->integer('car_id')->unsigned();
             $table->string('license_no', 8);
             $table->timestamps();
+        });
 
-            // Add foreign keys
-            $table->foreign('car_id')->references('cars')->on('id');
-            $table->foreign('license_no')->references('learners')->on('license_no');
+        // Add foreign keys
+        Schema::table('car_learner', function(Blueprint $table) {
+            $table->foreign('car_id')->references('id')->on('cars');
+            $table->foreign('license_no')->references('license_no')->on('learners');
         });
     }
 

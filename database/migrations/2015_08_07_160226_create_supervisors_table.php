@@ -16,6 +16,8 @@ class CreateSupervisorsTable extends Migration
             $table->string('license_no', 8);
             $table->string('name');
             $table->timestamps();
+
+            $table->primary('license_no');
         });
     }
 

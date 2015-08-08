@@ -16,9 +16,11 @@ class CreateDriveTaskTable extends Migration
             $table->integer('drive_id')->unsigned();
             $table->integer('task_id')->unsigned();
             $table->timestamps();
+        });
 
-            $table->foreign('drive_id')->references('drives')->on('id')->onDelete('cascade');
-            $table->foreign('task_id')->references('tasks')->on('id');
+        Schema::table('drive_task', function (Blueprint $table) {
+            $table->foreign('drive_id')->references('id')->on('drives')->onDelete('cascade');
+            $table->foreign('task_id')->references('id')->on('tasks');
         });
     }
 

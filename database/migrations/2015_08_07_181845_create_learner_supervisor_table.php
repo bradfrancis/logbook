@@ -16,9 +16,11 @@ class CreateLearnerSupervisorTable extends Migration
             $table->string('supervisor_license_no', 8);
             $table->string('learner_license_no', 8);
             $table->timestamps();
+        });
 
-            $table->foreign('supervisor_license_no')->references('supervisors')->on('license_no');
-            $table->foreign('learner_license_no')->references('learner')->on('license_no');
+        Schema::table('learner_supervisor', function (Blueprint $table) {
+            $table->foreign('supervisor_license_no')->references('license_no')->on('supervisors');
+            $table->foreign('learner_license_no')->references('license_no')->on('learners');
         });
     }
 
