@@ -17,6 +17,7 @@ class CreateVisibilityTable extends Migration
 
             $table->increments('id')->unsigned();
             $table->enum('key', $task_keys);
+            $table->string('description');
             $table->timestamps();
 
             $table->unique('key');
