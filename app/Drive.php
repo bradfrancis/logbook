@@ -82,4 +82,14 @@ class Drive extends Model
     {
         return $this->belongsToMany('App\RoadCondition');
     }
+
+    /**
+     * Return the duration of a given drive
+     *
+     * @return \DateInterval
+     */
+    public function getDurationAttribute()
+    {
+        return $this->start_date->diff($this->end_date);
+    }
 }

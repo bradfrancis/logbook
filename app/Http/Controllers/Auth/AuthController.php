@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Learner;
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -56,10 +57,22 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
+        // Create new user
+        $user = User::create([
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+
+        // Create learner
+        $learner = new Learner([
+            'name' => $data['name'],
+            'license_no' => $data['license_no'],
+            'license_level' => $data['license_level'],
+        ]);
+
+        // Save new learner and associate it with the user
+        $user->learner()->save($learner);
+
+        return $user;
     }
 }
