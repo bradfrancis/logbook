@@ -4,12 +4,13 @@
     <title>MyLogBook</title>
 
     <link rel="stylesheet" href="/css/all.css">
+    <script src="/js/all.js"></script>
 
 </head>
 
 <body>
 <header>
-    @include('partials.nav')
+    @include('partials.nav.nav')
 </header>
 <main>
     <div class="container-fluid">
@@ -18,7 +19,7 @@
     </div>
 </main>
 <footer>
-    <script src="/js/all.js"></script>
+    @yield('inline_scripts')
     @yield('footer')
 </footer>
 

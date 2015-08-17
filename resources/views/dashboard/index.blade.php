@@ -26,8 +26,9 @@
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default">
-                <div class="panel-heading">Recently Added Drives</div>
+                <div class="panel-heading">Most Recent Drives</div>
                 <div class="panel-body">
+                    @if($learner->drives->count() > 0)
                     <table class="table table-striped table-hover table-condensed">
                         <thead>
                             <tr>
@@ -37,15 +38,18 @@
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach($learner->most_recently_added_drives as $drive)
+                        @foreach($learner->most_recent as $drive)
                             <tr>
-                                <td>{{ $drive->end_date->diffForHumans(Carbon::now(), true) }} ago</td>
-                                <td>{{ $drive->title }}</td>
-                                <td>{{ $drive->duration->format('%h hours %I minutes') }}</td>
+                                <td>{{ $drive->created_at->diffForHumans(Carbon::now(), true) }} ago</td>
+                                <td><a href="{{ url('drives', ['id' => $drive->id])}}">{{ $drive->title }}</a></td>
+                                <td>{{ $drive->duration->format('%Hh %Im')}}</td>
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
+                    @else
+                    <p>No drives logged yet.</p>
+                    @endif
                 </div>
             </div>
         </div>
@@ -56,6 +60,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Recent Tasks</div>
                 <div class="panel-body">
+                    @if ($learner->tasks)
                     <table class="table table-striped table-hover table-condensed">
                         <thead>
                         <tr>
@@ -74,6 +79,9 @@
                         @endforeach
                         </tbody>
                     </table>
+                    @else
+                    <p>No recent tasks.</p>
+                    @endif
                 </div>
             </div>
         </div>

@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Learner extends Model
 {
-    protected $primaryKey = 'license_no';
 
     protected $table = 'learners';
 
@@ -28,18 +27,18 @@ class Learner extends Model
      */
     public function drives()
     {
-        return $this->hasMany('App\Drive', 'learner', 'license_no');
+        return $this->hasMany('App\Drive')->orderBy('start_date', 'desc');
     }
 
 
     /**
-     * Get all cars associated with this learner driver
+     * Get all vehicles associated with this learner driver
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function cars()
+    public function vehicles()
     {
-        return $this->belongsToMany('App\Car', null, 'license_no');
+        return $this->belongsToMany('App\Vehicle')->withTimestamps();
     }
 
     /**
@@ -49,20 +48,16 @@ class Learner extends Model
      */
     public function supervisors()
     {
-        return $this->belongsToMany(
-            'App\Supervisor',
-            'learner_supervisor',
-            'learner_license_no',
-            'supervisor_license_no'
-        );
+
+        return $this->belongsToMany('App\Supervisor')->withTimestamps();
     }
 
     /**
      * @return mixed
      */
-    public function getMostRecentlyAddedDrivesAttribute()
+    public function getMostRecentAttribute()
     {
-        return $this->drives()->orderBy('created_at', 'desc')->limit(5)->get()->all();
+        return $this->drives->take(5);
 
     }
 

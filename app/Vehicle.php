@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Car extends Model
+class Vehicle extends Model
 {
     protected $fillable = ['registration_no', 'make', 'model', 'year'];
 
@@ -15,6 +15,11 @@ class Car extends Model
      */
     public function learners()
     {
-        return $this->belongsToMany('App\Learner', 'car_learner', 'car_id', 'license_no');
+        return $this->belongsToMany('App\Learner');
+    }
+
+    public function getHumanFriendlyAttribute()
+    {
+        return sprintf('%s %s (%s)', $this->make, $this->model, $this->registration_no);
     }
 }

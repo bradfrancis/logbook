@@ -1,5 +1,7 @@
 <?php
 
+use App\Providers\ViewComposerServiceProvider;
+
 return [
 
     /*
@@ -144,6 +146,7 @@ return [
         App\Providers\AppServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        ViewComposerServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
 

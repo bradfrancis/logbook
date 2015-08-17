@@ -19,17 +19,17 @@ class CreateDrivesTable extends Migration
             $table->string('origin')->nullable();
             $table->string('destination')->nullable();
             $table->decimal('distance_km', 6, 2)->nullable();
-            $table->string('learner', 8);
-            $table->string('supervisor', 8);
+            $table->integer('learner_id')->unsigned();
+            $table->integer('supervisor_id')->unsigned();
             $table->integer('car_id')->unsigned();
             $table->timestamps();
         });
 
         // Add foreign keys
         Schema::table('drives', function(Blueprint $table) {
-            $table->foreign('learner')->references('license_no')->on('learners');
-            $table->foreign('supervisor')->references('license_no')->on('supervisors');
-            $table->foreign('car_id')->references('id')->on('cars');
+            $table->foreign('learner_id')->references('id')->on('learners');
+            $table->foreign('supervisor_id')->references('id')->on('supervisors');
+            $table->foreign('car_id')->references('id')->on('vehicles');
         });
 
     }

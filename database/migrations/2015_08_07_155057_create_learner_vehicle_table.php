@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLearnerSupervisorTable extends Migration
+class CreateLearnerVehicleTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,14 +12,15 @@ class CreateLearnerSupervisorTable extends Migration
      */
     public function up()
     {
-        Schema::create('learner_supervisor', function (Blueprint $table) {
-            $table->integer('supervisor_id')->unsigned();
+        Schema::create('learner_vehicle', function (Blueprint $table) {
+            $table->integer('vehicle_id')->unsigned();
             $table->integer('learner_id')->unsigned();
             $table->timestamps();
         });
 
-        Schema::table('learner_supervisor', function (Blueprint $table) {
-            $table->foreign('supervisor_id')->references('id')->on('supervisors');
+        // Add foreign keys
+        Schema::table('learner_vehicle', function(Blueprint $table) {
+            $table->foreign('vehicle_id')->references('id')->on('vehicles');
             $table->foreign('learner_id')->references('id')->on('learners');
         });
     }
@@ -31,6 +32,6 @@ class CreateLearnerSupervisorTable extends Migration
      */
     public function down()
     {
-        Schema::drop('learner_supervisor');
+        Schema::drop('learner_vehicle');
     }
 }

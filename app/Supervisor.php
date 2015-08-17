@@ -6,9 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Supervisor extends Model
 {
-    protected $primaryKey = 'license_no';
-
-    protected $fillable = ['name, license_no'];
+    protected $table = "supervisors";
+    protected $fillable = ['name', 'license_no'];
 
     /**
      * Get all learner drives associated with this supervisor
@@ -17,11 +16,11 @@ class Supervisor extends Model
      */
     public function learners()
     {
-        return $this->belongsToMany(
-            'App\Learner',
-            'learner_supervisor',
-            'supervisor_license_no',
-            'learner_license_no'
-        );
+        return $this->belongsToMany('App\Learner')->withTimestamps();
+    }
+
+    public function getHumanFriendlyAttribute()
+    {
+        return sprintf('%s (%s)', $this->name, $this->license_no);
     }
 }

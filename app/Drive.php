@@ -24,7 +24,7 @@ class Drive extends Model
      */
     public function learner()
     {
-        return $this->belongsTo('App\Learner', 'learner');
+        return $this->belongsTo('App\Learner');
     }
 
     /**
@@ -91,5 +91,13 @@ class Drive extends Model
     public function getDurationAttribute()
     {
         return $this->start_date->diff($this->end_date);
+    }
+
+    public function getDurationInMinutesAttribute()
+    {
+        $start = $this->start_date->timestamp;
+        $end = $this->end_date->timestamp;
+
+        return (int) floor(($end - $start) / 60);
     }
 }

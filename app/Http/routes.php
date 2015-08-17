@@ -27,3 +27,11 @@ Route::get('admin', ['middleware' => ['auth', 'admin'], function() {
 
 Route::get('dashboard', 'DashboardController@index');
 
+// Drives Routes
+Route::resource('drives', 'DrivesController');
+
+// Vehicles Routes
+Route::resource('vehicles', 'VehiclesController');
+
+Route::resource('supervisors', 'SupervisorsController');
+
