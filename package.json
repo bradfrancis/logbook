@@ -1,10 +1,37 @@
 {
   "private": true,
   "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-less": "^1.0.1",
+    "grunt-contrib-uglify": "^0.9.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-phpunit": "^0.3.6",
     "gulp": "^3.8.8"
   },
   "dependencies": {
-    "laravel-elixir": "^2.0.0",
-    "bootstrap-sass": "^3.0.0"
-  }
+    "bootbox": "^4.4.0",
+    "bootstrap-sass": "^3.0.0",
+    "laravel-elixir": "^2.0.0"
+  },
+  "name": "logbook",
+  "description": "A web based logbook for Tasmanian learner drivers.",
+  "version": "1.0.0",
+  "main": "gulpfile.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bradfrancis/logbook.git"
+  },
+  "author": "Brad Francis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bradfrancis/logbook/issues"
+  },
+  "homepage": "https://github.com/bradfrancis/logbook"
 }

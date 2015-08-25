@@ -19,7 +19,7 @@ class CreateDriveTaskTable extends Migration
         });
 
         Schema::table('drive_task', function (Blueprint $table) {
-            $table->foreign('drive_id')->references('id')->on('drives')->onDelete('cascade');
+            $table->foreign('drive_id')->references('id')->on('drives')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('task_id')->references('id')->on('tasks');
         });
     }

@@ -1,2 +1,13 @@
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
+footer {
+  height: 80px;
+  margin-top: 50px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  background-color: #0F0F0F;
+}
+
+.panel-group {
+  padding-top: 20px;
+}

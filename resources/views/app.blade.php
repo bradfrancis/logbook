@@ -3,8 +3,9 @@
 <head>
     <title>MyLogBook</title>
 
-    <link rel="stylesheet" href="/css/all.css">
-    <script src="/js/all.js"></script>
+    <link rel="stylesheet" href="/assets/css/theme.css">
+    <link rel="stylesheet" href="/assets/css/third-party.css">
+    <script src="/assets/js/app.js"></script>
 
 </head>
 
@@ -14,13 +15,15 @@
 </header>
 <main>
     <div class="container-fluid">
-        @include('flash::message')
-        @yield('content')
+        <div class="col-md-12">
+            @include('flash::message')
+            @yield('content')
+        </div>
     </div>
 </main>
 <footer>
     @yield('inline_scripts')
-    @yield('footer')
+    @include('partials.footer')
 </footer>
 
 </body>

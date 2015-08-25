@@ -19,7 +19,7 @@ class CreateDriveRoadTypeTable extends Migration
         });
 
         Schema::table('drive_road_type', function(Blueprint $table) {
-            $table->foreign('drive_id')->references('id')->on('drives')->onDelete('cascade');
+            $table->foreign('drive_id')->references('id')->on('drives')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('road_type_id')->references('id')->on('road_types');
         });
     }

@@ -1,0 +1,180 @@
+@import (reference) "themes/superhero/variables.less";
+@error: #CC3333;
+
+.ui-widget {
+  font-size: 0.8em;
+}
+
+.footer-gradient (@startColor: #485563, @endColor: @gray-light) {
+  background-color: @startColor;
+  background: -webkit-gradient(linear, left top, left bottom, from(@startColor), to(@endColor));
+  background: -webkit-linear-gradient(top, @startColor, @endColor);
+  background: -moz-linear-gradient(top, @startColor, @endColor);
+  background: -ms-linear-gradient(top, @startColor, @endColor);
+  background: -o-linear-gradient(top, @startColor, @endColor);
+}
+
+footer > .container-fluid {
+  height: 150px;
+  margin-top: 30px;
+  .footer-gradient();
+}
+
+.jumbotron {
+  color: @gray-lighter;
+}
+
+main {
+  min-height: 700px;
+}
+
+label.required::after {
+  content: '*';
+  color: @error;
+}
+
+label.error {
+  color: @error;
+}
+
+.panel-group {
+  margin-top: 20px;
+}
+
+.panel-group .panel {
+  margin-bottom: 10px;
+}
+
+.panel,
+.panel .panel-heading,
+.navbar-default .navbar-nav > li > a,
+.navbar-default .navbar-nav > li > a:hover,
+.dropdown-menu > li > a,
+.progress {
+  color: @gray-lighter;
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.dropdown-menu > li > a:hover {
+  color: @brand-primary;
+}
+
+.navbar-default .navbar-brand {
+  color: @brand-primary;
+  font-weight: bolder;
+}
+
+.form-control, input, textarea {
+  color: @gray-darker;
+}
+
+.form-control[disabled],
+fieldset[disabled] .form-control
+{
+  cursor: default;
+}
+
+textarea { resize: none; }
+
+button.panel-toggle-btn > span {
+  color: @brand-primary;
+}
+
+.no-js-hide { visibility: hidden; }
+
+span.input-group-addon {
+  padding: 6px 14px;
+  background-color: @brand-primary;
+  border-radius: 0;
+  border: 1px transparent;
+}
+
+div.add-resource-btn {
+  position: relative;
+  right: 20px;
+  top: 25px;
+}
+
+div.add-resource-btn > a.btn {
+  padding: 6px 10px 5px;
+}
+
+.progress-bar {
+  min-width: 2em;
+}
+
+/* MODALS */
+.modal-title,
+.modal-body * .control-label
+{
+  color: @gray-lighter;
+}
+
+.modal-header > button.close
+{
+  color: @gray-lighter;
+}
+
+.modal-body > p {
+  color: @gray-lighter;
+}
+
+.bootbox-body {
+  color: @gray-lighter;
+}
+
+ul.list-group > li.list-group-item
+{
+  line-height: 22px;
+}
+
+#road_conditions_list_group
+* i.ion-android-checkbox-outline
+{
+  color: @brand-success;
+}
+
+#traffic_conditions_list_group
+* i.ion-android-checkbox-outline
+{
+  color: @brand-warning;
+}
+
+#visibilities_list_group
+* i.ion-android-checkbox-outline
+{
+  color: @brand-info;
+}
+
+#road_types_list_group
+* i.ion-android-checkbox-outline
+{
+  color: @brand-primary;
+}
+
+.small-panel { min-height: 265px; }
+
+
+/* SELECT 2 STYLING */
+.select2-container--default,
+.select2-selection--multiple,
+.select2-selection__choice {
+  color: @brand-primary;
+}
+.select2-results__options
+{
+  color: @gray-darker;
+}
+
+/* FONT SIZES */
+.size-12 { font-size: 12px; }
+.size-14 { font-size: 14px; }
+.size-16 { font-size: 16px; }
+.size-18 { font-size: 18px; }
+.size-20 { font-size: 20px; }
+.size-22 { font-size: 22px; }
+.size-24 { font-size: 24px; }
+.size-26 { font-size: 26px; }
+.size-28 { font-size: 28px; }
+.size-30 { font-size: 30px; }
+.size-32 { font-size: 32px; }

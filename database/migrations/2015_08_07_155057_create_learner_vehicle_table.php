@@ -20,8 +20,8 @@ class CreateLearnerVehicleTable extends Migration
 
         // Add foreign keys
         Schema::table('learner_vehicle', function(Blueprint $table) {
-            $table->foreign('vehicle_id')->references('id')->on('vehicles');
-            $table->foreign('learner_id')->references('id')->on('learners');
+            $table->foreign('vehicle_id')->references('id')->on('vehicles')->onDelete('cascade');
+            $table->foreign('learner_id')->references('id')->on('learners')->onDelete('cascade');
         });
     }
 

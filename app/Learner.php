@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Learner extends Model
 {
+    const L1_REQUIRED_HOURS = 30;
+    const L2_REQUIRED_HOURS = 50;
 
     protected $table = 'learners';
 
@@ -27,7 +29,7 @@ class Learner extends Model
      */
     public function drives()
     {
-        return $this->hasMany('App\Drive')->orderBy('start_date', 'desc');
+        return $this->hasMany('App\Drive')->orderBy('created_at', 'desc');
     }
 
 
@@ -95,6 +97,27 @@ class Learner extends Model
     }
 
     /**
+     * Return the minimum required hours for a learner
+     * dependant on their license level.
+     *
+     * N.B. If the 'license_level' attribute on the
+     * current learner is not set it assumes a level
+     * of 'L1'
+     *
+     * @return int
+     */
+    public function getMinimumHoursAttribute()
+    {
+        if ($this->license_level === 'L2')
+        {
+            return Learner::L2_REQUIRED_HOURS;
+        }
+        else {
+            return Learner::L1_REQUIRED_HOURS;
+        }
+    }
+
+    /**
      * @return mixed
      */
     public function getRecentTasksAttribute()
@@ -106,5 +129,27 @@ class Learner extends Model
             ->orderBy('drives.end_date', 'desc')
             ->limit(10)
             ->get();
+    }
+
+    /**
+     * Calculates and returns a percentage of hours
+     * completed by a given learner
+     *
+     *
+     * @return int
+     */
+    public function getPercentCompleteAttribute()
+    {
+        // Get the total time logged for the current learner
+        $timeLogged = $this->getHoursLoggedAttribute();
+
+        // Calculate number of hours in decimal form
+        $hours = $timeLogged->h + ($timeLogged->i / 60);
+
+        // Calculate percentage completed
+        $percentage = (100 / $this->minimum_hours) * $hours;
+
+        // Return percentage as an integer
+        return (int) round($percentage);
     }
 }

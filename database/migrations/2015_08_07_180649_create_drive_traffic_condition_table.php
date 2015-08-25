@@ -19,7 +19,7 @@ class CreateDriveTrafficConditionTable extends Migration
         });
 
         Schema::table('drive_traffic_condition', function (Blueprint $table) {
-            $table->foreign('drive_id')->references('id')->on('drives')->onDelete('cascade');
+            $table->foreign('drive_id')->references('id')->on('drives')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('condition_id')->references('id')->on('traffic_conditions');
         });
     }

@@ -19,7 +19,7 @@ class CreateDriveVisibilityTable extends Migration
         });
 
         Schema::table('drive_visibility', function (Blueprint $table) {
-            $table->foreign('drive_id')->references('id')->on('drives')->onDelete('cascade');
+            $table->foreign('drive_id')->references('id')->on('drives')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('visibility_id')->references('id')->on('visibility');
         });
     }

@@ -19,8 +19,8 @@ class CreateLearnerSupervisorTable extends Migration
         });
 
         Schema::table('learner_supervisor', function (Blueprint $table) {
-            $table->foreign('supervisor_id')->references('id')->on('supervisors');
-            $table->foreign('learner_id')->references('id')->on('learners');
+            $table->foreign('supervisor_id')->references('id')->on('supervisors')->onDelete('cascade');
+            $table->foreign('learner_id')->references('id')->on('learners')->onDelete('cascade');
         });
     }
 
